@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 600px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0;
+        }
+
+        .add-link {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .edit-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADING -->
+    <h1>Student List</h1>
+
+    <!-- ADD BUTTON -->
+    <a href="/addStudent" class="add-link">Add Student</a>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course ID</th>
+            <th>Action</th> <!-- ✅ NEW COLUMN -->
+        </tr>
+
+        <tr th:each="s : ${students}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.email}"></td>
+            <td th:text="${s.courseId}"></td>
+
+            <!-- ✅ EDIT BUTTON -->
+            <td>
+                <a th:href="@{/editStudent/{id}(id=${s.id})}" class="edit-link">Edit</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

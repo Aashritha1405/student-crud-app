@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            width: 400px;
+            background-color: #8fb3c9;
+            padding: 20px;
+            border: 2px solid black;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .back-link {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Add New Entry</h2>
+
+    <form th:action="@{/saveStudent}" method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name">
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="text" name="email">
+        </div>
+
+        <div>
+            <label>Course ID:</label>
+            <input type="number" name="courseId">
+        </div>
+
+        <button type="submit">Save Student</button>
+    </form>
+</div>
+
+<a href="/students" class="back-link">Back to List</a>
+
+</body>
+</html>
